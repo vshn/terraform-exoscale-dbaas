@@ -13,7 +13,7 @@ Docs for the Exoscale provider (for databases): https://registry.terraform.io/pr
 ```hcl
 module "dbaas" {
   source = "git::ssh://git@git.vshn.net/vshn-terraform/module-exoscale-dbaas.git?ref=v1.0.0"
-  databases = var.databases
+  database_instances = var.database_instances
 }
 ```
 
