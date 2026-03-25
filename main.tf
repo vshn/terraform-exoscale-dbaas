@@ -1,4 +1,4 @@
-resource "exoscale_database" "database_instances" {
+resource "exoscale_dbaas" "database_instances" {
   for_each               = { for db in var.database_instances : db.name => db }
   zone                   = each.value.zone
   name                   = "${terraform.workspace}-${each.value.name}"
