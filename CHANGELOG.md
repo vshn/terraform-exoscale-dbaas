@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.2.0
+- Update deprecated database resources
+
 ## v1.1.0
 - Update to exoscale provider version 0.68.0
 
