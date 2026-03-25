@@ -8,13 +8,10 @@ resource "exoscale_database" "database_instances" {
   maintenance_time       = each.value.maintenance_time
   termination_protection = true
 
-  dynamic "pg" {
-    for_each = each.value.type == "pg" ? [1] : []
-    content {
-      version         = each.value.pg_version
-      backup_schedule = each.value.pg_backup_schedule
-      ip_filter       = each.value.pg_ip_filter
-      pg_settings     = jsonencode({ "timezone" = each.value.pg_timezone })
-    }
-  }
+  pg = each.value.type == "pg" ? {
+    version         = each.value.pg_version
+    backup_schedule = each.value.pg_backup_schedule
+    ip_filter       = each.value.pg_ip_filter
+    pg_settings     = jsonencode({ "timezone" = each.value.pg_timezone })
+  } : null
 }
